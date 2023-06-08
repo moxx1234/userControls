@@ -39,7 +39,6 @@ function App() {
 		fetch('https://userserver-n296.onrender.com/login', { method: 'post', body: dataJSON, headers: { 'Content-Type': 'application/json' }, credentials: 'include' })
 			.then(response => {
 				if (response.ok) {
-					console.log(userInfo)
 					logIn(userInfo.email, userInfo.status)
 				}
 				if (response.status === 500) {
