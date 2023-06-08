@@ -43,7 +43,6 @@ function App() {
 				}
 				if (response.status === 500) {
 					alert('Something went wrong :(')
-					document.location.reload()
 				} else if (response.status === 401) {
 					response.json().then(result => alert(result.error))
 				} else if (response.status === 403) {
@@ -64,7 +63,6 @@ function App() {
 				if (response.status === 409) alert('Account exists. Please log in')
 				else if (response.status === 500) {
 					alert('Something went wrong :(')
-					document.location.reload()
 				}
 			})
 	}

@@ -89,6 +89,7 @@ app.get('/login', (req, res) => {
 
 app.post('/logout', (req, res) => {
 	req.session.destroy()
+	res.send('session end')
 })
 
 app.get('/table', (req, res) => {
