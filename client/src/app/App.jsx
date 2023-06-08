@@ -28,7 +28,7 @@ function App() {
 		navigate('/', { replace: true })
 	}
 	const logOut = () => {
-		fetch('http://localhost:3301/logout', { credentials: 'include', method: 'post' })
+		fetch('https://userserver-n296.onrender.com/logout', { credentials: 'include', method: 'post' })
 		localStorage.removeItem('user')
 		setIsLogged(false)
 	}
@@ -36,7 +36,7 @@ function App() {
 	const handleLogin = (userInfo) => {
 		userInfo.date = getDate().dateTime
 		const dataJSON = JSON.stringify(userInfo)
-		fetch('http://localhost:3301/login', { method: 'post', body: dataJSON, headers: { 'Content-Type': 'application/json' }, credentials: 'include' })
+		fetch('https://userserver-n296.onrender.com/login', { method: 'post', body: dataJSON, headers: { 'Content-Type': 'application/json' }, credentials: 'include' })
 			.then(response => {
 				if (response.ok) {
 					console.log(userInfo)
@@ -57,7 +57,7 @@ function App() {
 		userInfo.date = dateObj.date
 		userInfo.dateTime = dateObj.dateTime
 		const dataJSON = JSON.stringify(userInfo)
-		fetch('http://localhost:3301/register', { method: 'post', body: dataJSON, headers: { 'Content-Type': 'application/json' } })
+		fetch('https://userserver-n296.onrender.com/register', { method: 'post', body: dataJSON, headers: { 'Content-Type': 'application/json' } })
 			.then(response => {
 				if (response.ok) {
 					logIn(userInfo.email)

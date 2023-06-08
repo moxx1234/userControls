@@ -9,13 +9,13 @@ const Main = ({ logOut }) => {
 	const [socket, setSocket] = useState(null)
 
 	useEffect(() => {
-		fetch('http://localhost:3301/table')
+		fetch('https://userserver-n296.onrender.com/table')
 			.then(response => { if (response.ok) return response.json() })
 			.then(actualData => {
 				setData(actualData)
 			})
 
-		const socket = io('http://localhost:3301', { transports: ['websocket'] })
+		const socket = io('https://userserver-n296.onrender.com', { transports: ['websocket'] })
 		setSocket(socket)
 		socket.on('tableUpdate', (updatedData) => {
 			setData(updatedData)
@@ -31,7 +31,7 @@ const Main = ({ logOut }) => {
 
 	const handleAction = (action) => {
 		selectedUsers.length === 0 ? console.error('no chosen users')
-			: fetch(`http://localhost:3301/${action}`, { method: 'post', body: JSON.stringify(selectedUsers), headers: { 'Content-Type': 'application/json' } })
+			: fetch(`https://userserver-n296.onrender.com/${action}`, { method: 'post', body: JSON.stringify(selectedUsers), headers: { 'Content-Type': 'application/json' } })
 				.then(response => response.ok ? response.json() : console.log(response))
 				.then(actualData => {
 					socket.emit('tableUpdate', actualData)
