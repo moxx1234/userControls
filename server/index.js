@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import bcrypt from 'bcrypt'
 import { Server } from 'socket.io'
 import http from 'http'
+import 'dotenv/config'
 
 const saltRounds = 10
 const app = express()
@@ -27,10 +28,10 @@ app.use(session({
 }))
 
 const connection = mysql.createConnection({
-	user: 'root',
-	host: 'localhost',
-	password: 'admin',
-	database: 'users'
+	user: process.env.DB_USERNAME,
+	host: process.env.DB_HOST,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_DBNAME
 })
 const server = http.createServer(app)
 const io = new Server(server)
